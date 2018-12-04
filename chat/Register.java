@@ -164,7 +164,7 @@ public class Register extends JFrame  implements ActionListener
 
 		comboBox = new JComboBox();
 		comboBox.setAutoscrolls(true);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3","4","5"}));
 		comboBox.setBounds(110, 116, 47, 23);
 		comboBox.addItemListener(new ItemListener() {
 

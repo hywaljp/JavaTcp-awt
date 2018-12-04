@@ -61,8 +61,8 @@ public class ChatRoom extends Thread implements ActionListener {
 		btnSend = new JButton("发送");
 		btnSave = new JButton("保存");
 		lblUserList = new JLabel("【在线用户列表】");
-		lblUserMessage = new JLabel("【聊天信息】");
-		lblSendMessage = new JLabel("聊天内容:");
+		lblUserMessage = new JLabel("群聊名：李俊鹏");
+		lblSendMessage = new JLabel("想法啥都行:");
 		lblChatUser = new JLabel("你对:");
 		lblUserTotal = new JLabel("在线人数:");
 		lblCount = new JLabel("0");
@@ -388,7 +388,7 @@ public class ChatRoom extends Thread implements ActionListener {
 		}
 	}
 
-	// "保存"按钮
+	// "保存"按钮    将聊天的内容保存在 文本 中
 	public void saveMessage() {
 		try {
 			FileOutputStream fileoutput = new FileOutputStream(
