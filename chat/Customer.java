@@ -15,3 +15,4 @@ public class Customer extends Object implements java.io.Serializable
 	 */
 	public String custHead;
 }
+

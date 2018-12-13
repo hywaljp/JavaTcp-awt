@@ -52,13 +52,13 @@ public class Connection extends Thread {
 	/**
 	 * 服务器日志窗体
 	 */
-	private ServerFrame sFrame;
+	private ChatServerFrame sFrame;
 
 	@SuppressWarnings("unchecked")
 	/**
 	 * 创建与客户端通讯
 	 */
-	public Connection(ServerFrame frame, Socket client, Vector u, Vector c) {
+	public Connection(ChatServerFrame frame, Socket client, Vector u, Vector c) {
 		netClient = client;
 		userOnline = u;
 		userChat = c;

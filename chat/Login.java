@@ -41,11 +41,10 @@ public class Login extends JFrame implements ActionListener {
 		pnlLogin = new JPanel();
 		this.getContentPane().add(pnlLogin);
 
-		lblServer = new JLabel("服务器:");
-		lblUserName = new JLabel("用户名:");
-		lblPassword = new JLabel("口  令:");
-		txtServer = new JTextField(20);
-		txtServer.setText("127.0.0.1");
+		
+		lblUserName = new JLabel("昵称:");
+		lblPassword = new JLabel("密码:");
+		
 		txtUserName = new JTextField(20);
 		pwdPassword = new JPasswordField(20);
 		btnLogin = new JButton("登录");
@@ -62,21 +61,21 @@ public class Login extends JFrame implements ActionListener {
 		 * setBackground设置背景色 * setOpaque将背景设置为透明
 		 */
 		pnlLogin.setLayout(null); // 组件用手动布局
-		pnlLogin.setBackground(new Color(52, 130, 203));
+		pnlLogin.setBackground(new Color(176,196, 222));
 
-		lblServer.setBounds(50, 100, 100, 30);
-		txtServer.setBounds(150, 100, 120, 25);
-		lblUserName.setBounds(50, 130, 100, 30);
-		txtUserName.setBounds(150, 130, 120, 25);
-		lblPassword.setBounds(50, 160, 100, 30);
-		pwdPassword.setBounds(150, 160, 120, 25);
-		btnLogin.setBounds(50, 200, 80, 25);
-		btnRegister.setBounds(130, 200, 80, 25);
-		btnExit.setBounds(210, 200, 80, 25);
+	
+		
+		lblUserName.setBounds(130, 160, 200, 60);
+		txtUserName.setBounds(180, 160, 240, 50);
+		lblPassword.setBounds(130, 230, 200, 60);
+		pwdPassword.setBounds(180, 230, 240, 50);
+		
+		btnLogin.setBounds(140, 300, 80, 50);
+		btnRegister.setBounds(260, 300, 80, 50);
+		btnExit.setBounds(370, 300, 80, 50);
 
-		Font fontstr = new Font("宋体", Font.PLAIN, 12);
-		lblServer.setFont(fontstr);
-		txtServer.setFont(fontstr);
+		Font fontstr = new Font("宋体", Font.PLAIN, 16);
+		
 		lblUserName.setFont(fontstr);
 		txtUserName.setFont(fontstr);
 		lblPassword.setFont(fontstr);
@@ -87,12 +86,12 @@ public class Login extends JFrame implements ActionListener {
 
 		lblUserName.setForeground(Color.BLACK);
 		lblPassword.setForeground(Color.BLACK);
-		btnLogin.setBackground(Color.ORANGE);
-		btnRegister.setBackground(Color.ORANGE);
-		btnExit.setBackground(Color.ORANGE);
+		btnLogin.setBackground(Color.gray);
+		btnRegister.setBackground(Color.gray);
+		btnExit.setBackground(Color.gray);
 
-		pnlLogin.add(lblServer);
-		pnlLogin.add(txtServer);
+		
+		
 		pnlLogin.add(lblUserName);
 		pnlLogin.add(txtUserName);
 		pnlLogin.add(lblPassword);
@@ -102,19 +101,18 @@ public class Login extends JFrame implements ActionListener {
 		pnlLogin.add(btnExit);
 
 		// 设置背景图片
-		Icon logo1 = new ImageIcon("images\\loginlogo.jpg");
+		Icon logo1 = new ImageIcon("images\\blueSky.jpg");
 		lblLogo = new JLabel(logo1);
-		lblLogo.setBounds(0, 0, 340, 66);
+		lblLogo.setBounds(0, 0, 540, 130);
 		pnlLogin.add(lblLogo);
 		// 设置登录窗口
 		setResizable(false);
-		setSize(340, 260);
+		setSize(545, 420);
 		setVisible(true);
 		scrnsize = toolkit.getScreenSize();
 		setLocation(scrnsize.width / 2 - this.getWidth() / 2, scrnsize.height
 				/ 2 - this.getHeight() / 2);
-		Image img = toolkit.getImage("images\\appico.jpg");
-		setIconImage(img);
+		
 
 		// 三个按钮注册监听
 		btnLogin.addActionListener(this);
@@ -136,14 +134,14 @@ public class Login extends JFrame implements ActionListener {
 				JOptionPane op1 = new JOptionPane();
 				op1.showMessageDialog(null, "用户名或密码不能为空");
 			} else {
-				strServerIp = txtServer.getText();
+				//strServerIp = txtServer.getText();
 				login();
 			}
 		}
 		if (source.equals(btnRegister)) {
-			strServerIp = txtServer.getText();
+		//	strServerIp = txtServer.getText();
 			this.dispose();
-			new Register(strServerIp);
+			new RegisterFrame(strServerIp);
 		}
 		if (source == btnExit) {
 			System.exit(0);
@@ -172,7 +170,7 @@ public class Login extends JFrame implements ActionListener {
 					new InputStreamReader(toServer.getInputStream()));
 			String status = fromServer.readLine();
 			if (status.equals("登录成功")) {
-				new ChatRoom((String) data.custName, strServerIp);
+				new ChatRoomFrame((String) data.custName, strServerIp);
 				this.dispose();
 				// 关闭流对象
 				streamToServer.close();
